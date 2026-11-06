@@ -1,10 +1,21 @@
 BOOT ERROR MARKER — USB D: (Hackintosh Dell Latitude 3420)
-HANG: EXITBS:START (opencore log 23:15:12, 23:03:21, 00:37:54)
-FIXES APPLIED:
-- DevirtualiseMmio = false (config.plist line 92-93)
-- SSDT-RHUB.aml Enabled = True (ACPI)
-- HideAuxiliary=False, Timeout=20, Target=67
-- SMBIOS MacBookPro16,2
-- OpenHfsPlus (not deprecated HfsPlus)
-- No drive swap done; internal SSD untouched
-IF FROZEN AGAIN ON BOOT: check opencore-*.txt timestamp; do NOT reboot blindly.
+
+Current resolved issue:
+- Invalid OpenCore config placement of `DmgLoading` under `Misc > Boot`
+- Contradictory `DevirtualiseMmio` notes across earlier repo files
+- Last known failure stage: `EXITBS:START`
+
+Current fix status:
+- `DmgLoading` removed from `Misc > Boot`
+- `DmgLoading` kept under `Misc > Security`
+- `DevirtualiseMmio = false`
+- `RebuildAppleMemoryMap = true`
+- `SyncRuntimePermissions = true`
+- `ProvideCustomSlide = true`
+
+Next validation:
+- Boot the USB installer again with verbose logging enabled
+- Confirm the external USB volume name is set and not just the default `(dmg)` label
+- If the hang continues, capture the last OpenCore lines before the freeze
+
+This repo is not a generic macOS installer; it is a hardware-specific EFI setup and still requires real-world validation on the target Dell Tiger Lake system.
