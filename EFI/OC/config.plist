@@ -90,7 +90,7 @@
 			<key>ClearTaskSwitchBit</key>
 			<false/>
 			<key>DevirtualiseMmio</key>
-			<true/>
+			<false/>
 			<key>DisableSingleUser</key>
 			<false/>
 			<key>DisableVariableWrite</key>
@@ -447,8 +447,6 @@
 		<dict>
 			<key>ConsoleAttributes</key>
 			<integer>0</integer>
-			<key>DmgLoading</key>
-			<string>Any</string>
 			<key>HibernateMode</key>
 			<string>None</string>
 			<key>HibernateSkipsPicker</key>
