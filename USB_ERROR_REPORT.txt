@@ -1,0 +1,9 @@
+USB BOOT FIX APPLIED (per diagnostic)
+Cause: EXITBS hang due to malformed DevirtualiseMmio + missing Booter/Kernel quirks.
+Changes made to config.plist:
+- Booter Quirks: DevirtualiseMmio=True, RebuildAppleMemoryMap=True, SyncRuntimePermissions=True, ProvideCustomSlide=True, SetupVirtualMap=True, EnableWriteUnprotector=False
+- Kernel Quirks: ProvideCurrentCpuInfo=True
+- ACPI: SSDT-RHUB=True (already)
+- Misc: DmgLoading=Signed
+ACTION: Reset NVRAM (option 6 in picker), then boot option 2 (Install macOS).
+If frozen again: this is the last USB edit before physical drive swap.
